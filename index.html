@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 1</title>
+  </head>
+  <body>
+    <div id="tabuada">
+      <h1>Exercício 1 - Tabuada</h1>
+
+      <label for="numero">Insira um número: </label>
+      <input type="number" name="numero" id="numero" />
+      <br />
+      <br />
+      <button id="btn-calculo">Calcular</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+      const multTable = document.getElementById("tabuada");
+      const number = document.getElementById("numero");
+      const btnCalculo = document.getElementById("btn-calculo");
+      const result = document.getElementById("resultado");
+
+      btnCalculo.addEventListener("click", function () {
+        let numero = number.value;
+        for (let i = 1; i <= 10; i++) {
+          const conta = numero * i;
+          let linha = document.createElement("p");
+          linha.textContent = `${numero} x ${i} = ${conta}`;
+          result.appendChild(linha);
+        }
+      });
+    </script>
+    
+  </body>
+</html>
