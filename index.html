@@ -9,8 +9,12 @@
     <div id="tabuada">
       <h1>Exercício 1 - Tabuada</h1>
 
-      <label for="numero">Insira um número: </label>
-      <input type="number" name="numero" id="numero" />
+      <input
+        type="number"
+        name="numero"
+        id="numero"
+        placeholder=" Insira um número: "
+      />
       <br />
       <br />
       <button id="btn-calculo">Calcular</button>
@@ -26,7 +30,14 @@
       const btnCalculo = document.getElementById("btn-calculo");
       const result = document.getElementById("resultado");
 
-      btnCalculo.addEventListener("click", function () {
+      // ENVIO COM O ENTER
+      number.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") efetuarTabuada();
+      });
+
+      btnCalculo.addEventListener("click", efetuarTabuada);
+
+      function efetuarTabuada() {
         let numero = number.value;
         result.innerHTML = "";
         for (let i = 1; i <= 10; i++) {
@@ -34,15 +45,18 @@
           let linha = document.createElement("p");
           linha.textContent = `${numero} x ${i} = ${conta}`;
           result.appendChild(linha);
+
+          number.value = "";
+          number.focus();
         }
-      });
+      }
     </script>
 
     <h2>Exercício 2 - Lista de Nomes</h2>
 
     <input type="text" id="nome" placeholder=" Digite aqui... " />
-    <br>
-    <br>
+    <br />
+    <br />
     <button id="btn-procurar">Procurar</button>
 
     <ul id="lista">
@@ -57,6 +71,10 @@
       const lista = document.getElementById("lista");
       const itens = document.querySelectorAll("li");
 
+      input.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") verificar();
+      });
+
       btnProcurar.addEventListener("click", verificar);
 
       function verificar() {
@@ -65,6 +83,9 @@
             itens[i].style.fontWeight = "bold";
           }
         }
+
+        input.value = "";
+        input.focus();
       }
     </script>
   </body>
