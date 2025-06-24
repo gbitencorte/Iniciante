@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercício 1</title>
+    <title>Iniciante</title>
   </head>
   <body>
     <div id="tabuada">
@@ -28,6 +28,7 @@
 
       btnCalculo.addEventListener("click", function () {
         let numero = number.value;
+        result.innerHTML = "";
         for (let i = 1; i <= 10; i++) {
           const conta = numero * i;
           let linha = document.createElement("p");
@@ -36,6 +37,35 @@
         }
       });
     </script>
-    
+
+    <h2>Exercício 2 - Lista de Nomes</h2>
+
+    <input type="text" id="nome" placeholder=" Digite aqui... " />
+    <br>
+    <br>
+    <button id="btn-procurar">Procurar</button>
+
+    <ul id="lista">
+      <li>João</li>
+      <li>Claudio</li>
+      <li>Marcio</li>
+    </ul>
+
+    <script>
+      let input = document.getElementById("nome");
+      const btnProcurar = document.getElementById("btn-procurar");
+      const lista = document.getElementById("lista");
+      const itens = document.querySelectorAll("li");
+
+      btnProcurar.addEventListener("click", verificar);
+
+      function verificar() {
+        for (let i = 0; i < itens.length; i++) {
+          if (itens[i].textContent == input.value) {
+            itens[i].style.fontWeight = "bold";
+          }
+        }
+      }
+    </script>
   </body>
 </html>
